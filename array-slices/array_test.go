@@ -1,6 +1,7 @@
 package array
 
 import "testing"
+import "reflect"
 
 func TestSum(t *testing.T) {
 	t.Run("sum of integer array", func(t *testing.T) {
@@ -19,6 +20,16 @@ func TestSum(t *testing.T) {
 		want := 7
 
 		if got != want {
+			t.Errorf("got %d want %d given, %v", got, want, numbers)
+		}
+	})
+
+	t.Run("sum of all slices", func(t * testing.T) {
+		numbers := [][]int{{1, 5}, {0, 9}, {-1, -3}}
+		got := SumAll(numbers)
+		want := []int{6, 9, -4}
+
+		if !reflect.DeepEqual(got, want) {
 			t.Errorf("got %d want %d given, %v", got, want, numbers)
 		}
 	})

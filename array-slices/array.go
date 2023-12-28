@@ -15,3 +15,11 @@ func SumSlice(numbers []int) int {
 	}
 	return sum
 }
+
+func SumAll(numbers [][]int) []int {
+	sum := []int{}
+	for _, inner := range numbers {
+		sum = append(sum, SumSlice(inner))
+	}
+	return sum
+}
